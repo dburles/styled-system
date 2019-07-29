@@ -113,3 +113,22 @@ test('colors prop returns theme.colorStyles object', () => {
   })
 })
 
+test('variant can define scales inline', () => {
+  const func = variant({
+    prop: 'size',
+    defaultScale: {
+      small: { fontSize: 14, padding: 8, },
+      large: { fontSize: 16, padding: 16, },
+    }
+  })
+  const a = func({ size: 'small' })
+  const b = func({ size: 'large' })
+  expect(a).toEqual({
+    fontSize: 14,
+    padding: 8,
+  })
+  expect(b).toEqual({
+    fontSize: 16,
+    padding: 16,
+  })
+})
